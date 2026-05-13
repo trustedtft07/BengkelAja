@@ -417,8 +417,3 @@ Berikut seluruh input yang dapat dilakukan pengguna beserta validasi dan aksinya
 - Kode registrasi admin (`YOUR_ADMIN_CODE`) sebagai lapisan proteksi tambahan
 
 ---
-
-## 👨‍💻 Developer
-
-**Ahmad Andhika Haririe**  
-GitHub: [@trustedtft07](https://github.com/trustedtft07)
