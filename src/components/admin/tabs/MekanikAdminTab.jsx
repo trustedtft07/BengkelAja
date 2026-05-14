@@ -39,12 +39,42 @@ function MekanikModal({ editData, onClose }) {
           {SPEK.map(s => <option key={s}>{s}</option>)}
         </select>
       </div>
-      {[['Pengalaman','exp','text','Contoh: 8 tahun'],['Rating (1–5)','rating','number','4.9'],['Harga Panggil (Rp)','harga','number','150000'],['Waktu Respons','waktu','text','15-20 menit']].map(([lbl,k,t,ph]) => (
+      {[['Rating (1–5)','rating','number','4.9'],['Harga Panggil (Rp)','harga','number','150000']].map(([lbl,k,t,ph]) => (
         <div key={k} style={{ marginBottom:14 }}>
           <label style={{ display:'block', fontSize:13, fontWeight:700, marginBottom:6 }}>{lbl}</label>
           <input className="input-plain" type={t} placeholder={ph} value={f[k]} onChange={set(k)} />
         </div>
       ))}
+      <div style={{ marginBottom:14 }}>
+        <label style={{ display:'block', fontSize:13, fontWeight:700, marginBottom:6 }}>Pengalaman</label>
+        <div style={{ position:'relative' }}>
+          <input
+            className="input-plain"
+            type="number"
+            min="0"
+            placeholder="Contoh: 8"
+            value={f.exp.replace(/\s*tahun$/i, '')}
+            onChange={e => setF(p => ({ ...p, exp: e.target.value ? e.target.value + ' tahun' : '' }))}
+            style={{ paddingRight: 60 }}
+          />
+          <span style={{ position:'absolute', right:14, top:'50%', transform:'translateY(-50%)', fontSize:13, fontWeight:700, color:'var(--text-light)', pointerEvents:'none' }}>tahun</span>
+        </div>
+      </div>
+      <div style={{ marginBottom:14 }}>
+        <label style={{ display:'block', fontSize:13, fontWeight:700, marginBottom:6 }}>Waktu Respons</label>
+        <div style={{ position:'relative' }}>
+          <input
+            className="input-plain"
+            type="number"
+            min="0"
+            placeholder="Contoh: 15"
+            value={f.waktu.replace(/\s*menit$/i, '')}
+            onChange={e => setF(p => ({ ...p, waktu: e.target.value ? e.target.value + ' menit' : '' }))}
+            style={{ paddingRight: 60 }}
+          />
+          <span style={{ position:'absolute', right:14, top:'50%', transform:'translateY(-50%)', fontSize:13, fontWeight:700, color:'var(--text-light)', pointerEvents:'none' }}>menit</span>
+        </div>
+      </div>
       <div style={{ display:'flex', gap:10, justifyContent:'flex-end' }}>
         <button className="btn btn-outline" style={{ width:'auto', padding:'10px 24px' }} onClick={onClose}>Batal</button>
         <button className="btn btn-dark"    style={{ width:'auto', padding:'10px 24px' }} onClick={submit}>{editData ? 'Perbarui' : 'Tambah'}</button>
