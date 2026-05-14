@@ -1,5 +1,7 @@
+import { createPortal } from 'react-dom'
+
 export default function ConfirmDialog({ title, msg, okLabel = 'Lanjutkan', okClass = 'btn-red', onOk, onCancel }) {
-  return (
+  return createPortal(
     <div className="fixed inset-0 z-[400] flex items-center justify-center"
          style={{ background: 'rgba(0,0,0,.4)' }}>
       <div className="anim-pop" style={{
@@ -13,6 +15,7 @@ export default function ConfirmDialog({ title, msg, okLabel = 'Lanjutkan', okCla
           <button className={`btn ${okClass}`} style={{ padding: 10 }} onClick={onOk}>{okLabel}</button>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
